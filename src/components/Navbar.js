@@ -5,8 +5,7 @@ export class Navbar extends Component {
   static propTypes = {};
   render() {
       let {mode, toggelMode} = this.props
-      console.log(mode, toggelMode);
-    return (
+     return (
       <div>
         <nav className={`navbar navbar-expand-lg navbar-${mode} bg-${mode}`}>
           <div className="container-fluid">
