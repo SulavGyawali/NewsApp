@@ -1,55 +1,58 @@
 import React, { Component } from "react";
 import NewsItem from "./NewsItem";
+import Spinner from "./Spinner";
 
 export class News extends Component {
   articles = [];
   constructor() {
-    super();
-    this.state = {
-      articles: this.articles,
-      loading: false,
-      page: 1,
-      pageSize: 18
-    };
-  }
-  async componentDidMount() {
-    await this.loadPage();
-  }
-
-  loadPage = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=a26096cd635a4567b3194c835d33e4d1&page=${this.state.page}&pageSize=${this.state.pageSize}`;
-    let data = await fetch(url);
-    let parsedData = await data.json();
-    this.setState({
-      articles: parsedData.articles,
-      totalResults: parsedData.totalResults,
-    });
-  };
-
-  handleNext = async () => {
-    if ((this.state.page + 1 )> (Math.ceil(this.state.totalResults / this.state.pageSize))) {
-    } else {
-      await this.setState({ page: this.state.page + 1 });
-      await this.loadPage();
+      super();
+      this.state = {
+          articles: this.articles,
+          loading: false,
+          page: 1,
+        };
     }
-  };
-  handlePrev = async () => {
-    await this.setState({ page: this.state.page - 1 });
-    await this.loadPage();
-  };
-
-  render() {
-    let { mode } = this.props;
-
-    return (
-      <div className="container my-3 ">
-        <h2
+    async componentDidMount() {
+        await this.loadPage();
+    }
+    
+    loadPage = async () => {
+        let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=a26096cd635a4567b3194c835d33e4d1&page=${this.state.page}&pageSize=${this.props.pageSize}`;
+        this.setState({loading: true})
+        let data = await fetch(url);
+        let parsedData = await data.json();
+        await this.setState({
+            articles: parsedData.articles,
+            totalResults: parsedData.totalResults,
+            loading: false
+        });
+    };
+    
+    handleNext = async () => {
+        
+        await this.setState({ page: this.state.page + 1 });
+        await this.loadPage();
+        
+    };
+    handlePrev = async () => {
+        await this.setState({ page: this.state.page - 1 });
+        await this.loadPage();
+    };
+    
+    render() {
+        let { mode } = this.props;
+        
+        return (
+            <div className="container my-3 ">
+        <h1
           style={{
-            color: mode === "light" ? "black" : "white",
-          }}
-        >
+              color: mode === "light" ? "black" : "white",
+            }}
+            className="text-center"
+            >
           Top Headlines
-        </h2>
+        </h1>
+        {this.state.loading && <Spinner/>}
         <div className="row">
           {this.state.articles.map((element) => {
             return (
@@ -84,6 +87,7 @@ export class News extends Component {
             className={`btn btn-outline-${mode === "light" ? "dark" : "light"}`}
             type="button"
             onClick={this.handleNext}
+            disabled={(this.state.page + 1 )> (Math.ceil(this.state.totalResults / this.props.pageSize))}
           >
             Next &rarr;
           </button>
