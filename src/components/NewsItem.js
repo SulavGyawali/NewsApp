@@ -6,7 +6,7 @@ export class NewsItem extends Component {
     let myStyle = {
       backgroundColor: (mode === 'light'?'white':"#0d6da9"),
       color: (mode === 'light'?'black':"white"),
-      width: "18rem",
+      
     };
     return (
       <div className="my-3">
