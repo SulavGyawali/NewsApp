@@ -3,31 +3,32 @@ import NewsItem from "./NewsItem";
 import Spinner from "./Spinner";
 import PropTypes from "prop-types";
 
-export class News extends Component {
+export class News extends Component{
   static defaultProps = {
     country: "in",
     pageSize: 18,
-    category: 'general'
+    category: 'general',
   };
 
   static propTypes = {
     country: PropTypes.string,
     pageSize: PropTypes.number,
     category: PropTypes.string,
+    loadPage: PropTypes.func,
   };
   articles = [];
-  constructor() {
-    super();
+  capatalizeFirstLetter = (string)=>{
+    return string.charAt(0).toUpperCase() + string.slice(1)
+  }
+  constructor(props) {
+    super(props);
     this.state = {
       articles: this.articles,
       loading: false,
       page: 1,
     };
+    document.title = `NewsApp - ${(this.capatalizeFirstLetter(this.props.category))}`
   }
-  async componentDidMount() {
-    await this.loadPage();
-  }
-
   loadPage = async () => {
     let url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=a26096cd635a4567b3194c835d33e4d1&page=${this.state.page}&pageSize=${this.props.pageSize}`;
     this.setState({ loading: true });
@@ -38,7 +39,10 @@ export class News extends Component {
       totalResults: parsedData.totalResults,
       loading: false,
     });
-  };
+  }
+  async componentDidMount() {
+    await this.loadPage();
+  }
 
   handleNext = async () => {
     await this.setState({ page: this.state.page + 1 });
@@ -48,7 +52,6 @@ export class News extends Component {
     await this.setState({ page: this.state.page - 1 });
     await this.loadPage();
   };
-
   render() {
     let { mode } = this.props;
 
@@ -60,7 +63,7 @@ export class News extends Component {
           }}
           className="text-center mb-3"
         >
-          Top Headlines
+          Top {this.capatalizeFirstLetter(this.props.category)}  Headlines  
         </h1>
         {this.state.loading && <Spinner />}
         <div className="row">
@@ -79,7 +82,10 @@ export class News extends Component {
                     }
                     imageUrl={element.urlToImage}
                     newsUrl={element.url}
+                    publishedAt={element.publishedAt}
+                    author={element.author}
                     mode={mode}
+                    source={element.source.name}
                   />
                 </div>
               );

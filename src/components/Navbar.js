@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 // import PropTypes from "prop-types";
-import {Link } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 
 export class Navbar extends Component {
   static propTypes = {};
   render() {
-      let {mode, toggelMode} = this.props
-     return (
+    let { mode, toggelMode } = this.props;
+    return (
       <div>
         <nav className={`navbar navbar-expand-lg navbar-${mode} bg-${mode}`}>
           <div className="container-fluid">
@@ -35,39 +34,53 @@ export class Navbar extends Component {
                     Home
                   </Link>
                 </li>
-                 <li className="nav-item">
-                  <Link className="nav-link" to="/business">Business</Link>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/business">
+                    Business
+                  </Link>
                 </li>
-                 <li className="nav-item">
-                  <Link className="nav-link" to="/entertaintment">Entertaintment</Link>
-                </li>
-                
-                 <li className="nav-item">
-                  <Link className="nav-link" to="/health">Health </Link>
-                </li>
-                 <li className="nav-item">
-                  <Link className="nav-link" to="/science">Science </Link>
-                </li>
-                 <li className="nav-item">
-                  <Link className="nav-link" to="/sport">Sport </Link>
-                </li>
-                 <li className="nav-item">
-                  <Link className="nav-link" to="/technology">Technology </Link>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/entertaintment">
+                    Entertaintment
+                  </Link>
                 </li>
 
+                <li className="nav-item">
+                  <Link className="nav-link" to="/health">
+                    Health{" "}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/science">
+                    Science{" "}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/sport">
+                    Sport{" "}
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/technology">
+                    Technology{" "}
+                  </Link>
+                </li>
               </ul>
-          <div className="form-check form-switch">
-            <input
-              className="form-check-input"
-              type="checkbox"
-              role="switch"
-              id="flexSwitchCheckDefault"
-              onClick={toggelMode}
-            />
-            <label className="form-check-label" htmlFor="flexSwitchCheckDefault" >
-              Enable {mode === 'light'? 'dark':'light'} Mode
-            </label>
-          </div>
+              <div className="form-check form-switch mx-3">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  role="switch"
+                  id="flexSwitchCheckDefault"
+                  onClick={toggelMode}
+                />
+                <label
+                  className="form-check-label"
+                  htmlFor="flexSwitchCheckDefault"
+                >
+                  Enable {mode === "light" ? "dark" : "light"} Mode
+                </label>
+              </div>
             </div>
           </div>
         </nav>

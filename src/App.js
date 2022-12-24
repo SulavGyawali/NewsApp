@@ -7,6 +7,7 @@ import Alert from "./components/Alert";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 export default class App extends Component {
+  pageSize = 18;
   mode = "light";
   constructor() {
     super();
@@ -15,6 +16,7 @@ export default class App extends Component {
       alert: null,
     };
   }
+
   render() {
     const showAlert = (message, type) => {
       this.setState({
@@ -58,11 +60,12 @@ export default class App extends Component {
               path="/business"
               element={
                 <News
-                key="business"
+                  key="business"
                   mode={this.state.mode}
-                  pageSize={18}
+                  pageSize={this.pageSize}
                   country="in"
                   category="business"
+                   
                 />
               }
             />
@@ -71,11 +74,12 @@ export default class App extends Component {
               path="/"
               element={
                 <News
-                key="general"
+                  key="general"
                   mode={this.state.mode}
-                  pageSize={18}
+                  pageSize={this.pageSize}
                   country="in"
                   category="general"
+                   
                 />
               }
             />
@@ -85,11 +89,12 @@ export default class App extends Component {
               path="/entertaintment"
               element={
                 <News
-                key="entertaintment"
+                  key="entertaintment"
                   mode={this.state.mode}
-                  pageSize={18}
+                  pageSize={this.pageSize}
                   country="in"
                   category="entertaintment"
+                   
                 />
               }
             />
@@ -99,11 +104,12 @@ export default class App extends Component {
               path="/health"
               element={
                 <News
-                key="health"
+                  key="health"
                   mode={this.state.mode}
-                  pageSize={18}
+                  pageSize={this.pageSize}
                   country="in"
                   category="health"
+                   
                 />
               }
             />
@@ -113,11 +119,12 @@ export default class App extends Component {
               path="/science"
               element={
                 <News
-                key="science"
+                  key="science"
                   mode={this.state.mode}
-                  pageSize={18}
+                  pageSize={this.pageSize}
                   country="in"
                   category="science"
+                   
                 />
               }
             />
@@ -127,11 +134,12 @@ export default class App extends Component {
               path="/sport"
               element={
                 <News
-                key="sport"
+                  key="sport"
                   mode={this.state.mode}
-                  pageSize={18}
+                  pageSize={this.pageSize}
                   country="in"
                   category="sport"
+                   
                 />
               }
             />
@@ -141,11 +149,12 @@ export default class App extends Component {
               path="/technology"
               element={
                 <News
-                key="technology"
+                  key="technology"
                   mode={this.state.mode}
-                  pageSize={18}
+                  pageSize={this.pageSize}
                   country="in"
                   category="technology"
+                   
                 />
               }
             />
