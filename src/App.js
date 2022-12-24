@@ -5,15 +5,21 @@ import React, { Component } from "react";
 import News from "./components/News";
 import Alert from "./components/Alert";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LoadingBar from "react-top-loading-bar";
 
 export default class App extends Component {
-  pageSize = 18;
+  pageSize = 6;
   mode = "light";
+  apiKey= process.env.REACT_APP_NEWS_API
+  setProgress = (progress) => {
+    this.setState({ progress: progress });
+  };
   constructor() {
     super();
     this.state = {
       mode: this.mode,
       alert: null,
+      progress: 10,
     };
   }
 
@@ -52,6 +58,11 @@ export default class App extends Component {
             toggelMode={toggelMode}
             showAlert={showAlert}
           />
+          <LoadingBar
+            color="#f11946"
+            progress={this.state.progress}
+            height={3}
+          />
           <Alert alert={this.state.alert} />
 
           <Routes>
@@ -60,12 +71,12 @@ export default class App extends Component {
               path="/business"
               element={
                 <News
+                  setProgress={this.setProgress} apiKey={this.apiKey}
                   key="business"
                   mode={this.state.mode}
                   pageSize={this.pageSize}
                   country="in"
                   category="business"
-                   
                 />
               }
             />
@@ -74,12 +85,12 @@ export default class App extends Component {
               path="/"
               element={
                 <News
+                  setProgress={this.setProgress} apiKey={this.apiKey}
                   key="general"
                   mode={this.state.mode}
                   pageSize={this.pageSize}
                   country="in"
                   category="general"
-                   
                 />
               }
             />
@@ -89,12 +100,12 @@ export default class App extends Component {
               path="/entertaintment"
               element={
                 <News
+                  setProgress={this.setProgress} apiKey={this.apiKey}
                   key="entertaintment"
                   mode={this.state.mode}
                   pageSize={this.pageSize}
                   country="in"
                   category="entertaintment"
-                   
                 />
               }
             />
@@ -104,12 +115,12 @@ export default class App extends Component {
               path="/health"
               element={
                 <News
+                  setProgress={this.setProgress} apiKey={this.apiKey}
                   key="health"
                   mode={this.state.mode}
                   pageSize={this.pageSize}
                   country="in"
                   category="health"
-                   
                 />
               }
             />
@@ -119,12 +130,12 @@ export default class App extends Component {
               path="/science"
               element={
                 <News
+                  setProgress={this.setProgress} apiKey={this.apiKey}
                   key="science"
                   mode={this.state.mode}
                   pageSize={this.pageSize}
                   country="in"
                   category="science"
-                   
                 />
               }
             />
@@ -134,12 +145,12 @@ export default class App extends Component {
               path="/sport"
               element={
                 <News
+                  setProgress={this.setProgress} apiKey={this.apiKey}
                   key="sport"
                   mode={this.state.mode}
                   pageSize={this.pageSize}
                   country="in"
                   category="sport"
-                   
                 />
               }
             />
@@ -149,12 +160,12 @@ export default class App extends Component {
               path="/technology"
               element={
                 <News
+                  setProgress={this.setProgress} apiKey={this.apiKey}
                   key="technology"
                   mode={this.state.mode}
                   pageSize={this.pageSize}
                   country="in"
                   category="technology"
-                   
                 />
               }
             />

@@ -10,7 +10,7 @@ export class Navbar extends Component {
       <div>
         <nav className={`navbar navbar-expand-lg navbar-${mode} bg-${mode}`}>
           <div className="container-fluid">
-            <Link className="navbar-brand" to="/">
+            <Link  className="navbar-brand" to="/">
               NewsApp
             </Link>
             <button
@@ -30,38 +30,38 @@ export class Navbar extends Component {
             >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <Link className="nav-link active" aria-current="page" to="/">
+                  <Link  className="nav-link active" aria-current="page" to="/">
                     Home
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/business">
+                  <Link  className="nav-link" to="/business">
                     Business
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/entertaintment">
+                  <Link  className="nav-link" to="/entertaintment">
                     Entertaintment
                   </Link>
                 </li>
 
                 <li className="nav-item">
-                  <Link className="nav-link" to="/health">
+                  <Link  className="nav-link" to="/health">
                     Health{" "}
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/science">
+                  <Link  className="nav-link" to="/science">
                     Science{" "}
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/sport">
+                  <Link  className="nav-link" to="/sport">
                     Sport{" "}
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/technology">
+                  <Link  className="nav-link" to="/technology">
                     Technology{" "}
                   </Link>
                 </li>
